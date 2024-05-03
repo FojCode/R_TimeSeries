@@ -14,6 +14,28 @@ abline(h = 0, col = "gray")  # Add horizontal line at 0
 
 # Customize the plot further with additional arguments to plot()
 
+# autocorrelation function arma(1,1)
+# Define ARMA(1,1) parameters (adjust as needed)
+phi <- 0.8  # AR coefficient
+theta <- -0.5  # MA coefficient
+sigma <- 1  # Standard deviation of the innovations
+
+# Simulate ARMA(1,1) process with 100 observations
+arma.process <- arima.sim(model = list(ar = phi, ma = theta), sd = sigma, n = 100)
+
+# Calculate ACF with 20 lags
+acf_result <- acf(arma.process, lh = 0, uh = 20)
+
+# Plot the ACF
+plot(acf_result, main = "Sample ACF of ARMA(1,1) Process", xlab = "Lag", ylab = "Autocorrelation")
+
+# Add reference lines (optional)
+abline(h = 0, col = "gray")  # Add horizontal line at 0
+abline(h = +/- 2 / sqrt(length(arma.process)), col = "red", linetype = "dashed") # Add confidence interval lines
+
+# Customize the plot further with additional arguments to plot()
+
+
 # partial autocorrelation function of time series 
 # Sample time series data (replace with your actual data)
 data <- rnorm(100)  # Generate 100 random normal values
