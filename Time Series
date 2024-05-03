@@ -14,6 +14,26 @@ abline(h = 0, col = "gray")  # Add horizontal line at 0
 
 # Customize the plot further with additional arguments to plot()
 
+# partial autocorrelation function MA(1)
+# Define MA(1) parameters (adjust theta as needed)
+theta <- 0.5  # MA coefficient
+sigma <- 1  # Standard deviation of the innovations
+
+# Simulate MA(1) process with 100 observations
+ma.process <- arima.sim(model = list(ma = theta), sd = sigma, n = 100)
+
+# Calculate PACF with 20 lags
+pacf_result <- pacf(ma.process, lh = 0, uh = 20)
+
+# Plot the PACF
+plot(pacf_result, main = "PACF of MA(1) Process", xlab = "Lag", ylab = "Partial Autocorrelation")
+
+# Add reference lines (optional)
+abline(h = 0, col = "gray")  # Add horizontal line at 0
+abline(h = +/- 2 / sqrt(length(ma.process)), col = "red", linetype = "dashed") # Add confidence interval lines
+
+# Customize the plot further with additional arguments to plot()
+
 # spectral density function of a time series 
 # Sample time series data (replace with your actual data)
 data <- rnorm(100)  # Generate 100 random normal values
