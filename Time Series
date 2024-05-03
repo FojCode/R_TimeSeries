@@ -14,5 +14,21 @@ abline(h = 0, col = "gray")  # Add horizontal line at 0
 
 # Customize the plot further with additional arguments to plot()
 
+# Turning point test of a time series 
+
+# Install the required package (if not already installed)
+if (!require("randtests")) install.packages("randtests")
+library(randtests)
+
+# Sample time series data (replace with your actual data)
+data <- rnorm(100)
+
+# Perform the Turning Point test
+turning_point_result <- turning.point.test(data)
+
+# Print the test results
+summary(turning_point_result)
+
+
 # Sample autocorrelation function of time series 
 
