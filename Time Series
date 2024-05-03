@@ -14,6 +14,22 @@ abline(h = 0, col = "gray")  # Add horizontal line at 0
 
 # Customize the plot further with additional arguments to plot()
 
+# Linear filters of a time series 
+# Install the required package (if not already installed)
+if (!require("signal")) install.packages("signal")
+library(signal)
+
+# Sample time series data (replace with your actual data)
+data <- rnorm(100)
+
+# Define filter coefficients (adjust as needed)
+filter_coeffs <- c(0.2, 0.5, 0.3)  # Example filter with weights
+
+# Apply filter function
+filtered_data <- filt(data, filter = filter_coeffs)
+
+# Plot original and filtered data (similar to previous example)
+
 # Acf/pacf test of a time series 
 # Sample time series data (replace with your actual data)
 data <- rnorm(100)
