@@ -14,6 +14,23 @@ abline(h = 0, col = "gray")  # Add horizontal line at 0
 
 # Customize the plot further with additional arguments to plot()
 
+# spectral density function of a time series 
+# Sample time series data (replace with your actual data)
+data <- rnorm(100)  # Generate 100 random normal values
+
+# Calculate the spectral density
+spectrum_result <- spectrum(data, main = "Spectral Density of the Time Series")
+
+# Access the frequency and spectral power components (optional)
+# frequencies <- spectrum_result$freq
+# power <- spectrum_result$spec
+
+# Plot the spectral density (result already includes plot)
+# plot(spectrum_result)
+
+# Customize the plot further with additional arguments to plot()
+
+
 # spectral density function arma(p,q)
 # Install the required package (if not already installed)
 if (!require("beyondWhittle")) install.packages("beyondWhittle")
