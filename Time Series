@@ -14,6 +14,29 @@ abline(h = 0, col = "gray")  # Add horizontal line at 0
 
 # Customize the plot further with additional arguments to plot()
 
+# Acf/pacf test of a time series 
+# Sample time series data (replace with your actual data)
+data <- rnorm(100)
+
+# Fit an ARMA(p,q) model (replace with your estimated model)
+arma_model <- arima(data, order = c(1, 1))  # Example ARMA(1,1)
+
+# Extract the residuals from the fitted model
+residuals <- residuals(arma_model)
+
+# Calculate ACF and PACF of the residuals
+acf_result <- acf(residuals, lh = 0, uh = 20)
+pacf_result <- pacf(residuals, lh = 0, uh = 20)
+
+# Plot ACF and PACF
+plot(acf_result, main = "ACF of ARMA Model Residuals", xlab = "Lag", ylab = "Autocorrelation")
+plot(pacf_result, main = "PACF of ARMA Model Residuals", xlab = "Lag", ylab = "Partial Autocorrelation")
+
+# Add reference lines (optional)
+abline(h = 0, col = "gray")  # Add horizontal line at 0
+abline(h = +/- 2 / sqrt(length(residuals)), col = "red", linetype = "dashed") # Add confidence interval lines
+
+
 # breusch godfrey lm test of a time series 
 # Install the required package (if not already installed)
 if (!require("lmtest")) install.packages("lmtest")
