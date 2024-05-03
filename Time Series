@@ -1,0 +1,18 @@
+# Sample autocovariance function 
+
+# Sample time series data (replace with your actual data)
+data <- rnorm(100)  # Generate 100 random normal values
+
+# Calculate ACVF with 20 lags (adjust max.lag as needed)
+acvf <- acf(data, lh = 0, uh = 20, type = "covariance")
+
+# Plot the ACVF
+plot(acvf, main = "Sample Autocovariance Function", xlab = "Lag", ylab = "Autocovariance")
+
+# Add reference lines (optional)
+abline(h = 0, col = "gray")  # Add horizontal line at 0
+
+# Customize the plot further with additional arguments to plot()
+
+# Sample autocorrelation function of time series 
+
