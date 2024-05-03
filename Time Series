@@ -14,6 +14,31 @@ abline(h = 0, col = "gray")  # Add horizontal line at 0
 
 # Customize the plot further with additional arguments to plot()
 
+# spectral density function arma(p,q)
+# Install the required package (if not already installed)
+if (!require("beyondWhittle")) install.packages("beyondWhittle")
+library(beyondWhittle)
+
+# Define ARMA(p,q) parameters (adjust as needed)
+ar <- c(0.8)  # AR coefficients vector
+ma <- c(-0.5)  # MA coefficients vector
+sigma2 <- 1  # Innovation variance
+
+# Set the desired frequencies
+freqs <- seq(from = 0, to = pi, length = 101)  # Adjust number of frequencies
+
+# Calculate the spectral density
+spectral_density <- psd_arma(freq = freqs, ar = ar, ma = ma, sigma2 = sigma2)
+
+# Plot the spectral density
+plot(freqs, spectral_density, type = "l", main = "Spectral Density of ARMA(1,1) Process")
+xlabel("Frequency")
+ylabel("Spectral Density")
+
+# Add reference lines (optional)
+# ... (you can add reference lines based on your analysis)
+
+
 # inversion formula of a time series 
 # Sample differenced time series (replace with your actual data)
 differenced_data <- diff(data)  # Assuming data is your original series
