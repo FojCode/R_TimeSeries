@@ -14,6 +14,27 @@ abline(h = 0, col = "gray")  # Add horizontal line at 0
 
 # Customize the plot further with additional arguments to plot()
 
+# breusch godfrey lm test of a time series 
+# Install the required package (if not already installed)
+if (!require("lmtest")) install.packages("lmtest")
+library(lmtest)
+
+# Sample time series data (replace with your actual data)
+data <- rnorm(100)
+
+# Fit an ARIMA(p,q) model (replace with your estimated model)
+arma_model <- arima(data, order = c(1, 1))  # Example ARMA(1,1)
+
+# Extract the residuals from the fitted model
+residuals <- residuals(arma_model)
+
+# Perform Breusch-Godfrey LM test
+lmtest_result <- lmTest(lm(residuals ~ arma_model$fitted.values + arma_model$fitted.values^2), statistic = "LM")
+
+# Print the test results
+summary(lmtest_result)
+
+
 # Turning point test of a time series 
 
 # Install the required package (if not already installed)
