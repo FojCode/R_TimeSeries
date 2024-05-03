@@ -14,6 +14,17 @@ abline(h = 0, col = "gray")  # Add horizontal line at 0
 
 # Customize the plot further with additional arguments to plot()
 
+# inversion formula of a time series 
+# Sample differenced time series (replace with your actual data)
+differenced_data <- diff(data)  # Assuming data is your original series
+
+# Invert differencing (assuming initial value of 0)
+inverted_data <- diffinv(differenced_data)
+
+# You might need to adjust for the initial value (lost in differencing)
+inverted_data <- inverted_data + data[1]  # Assuming data[1] is the initial value
+
+
 # Convolution linear filters 
 # Sample time series data (replace with your actual data)
 data <- rnorm(100)
